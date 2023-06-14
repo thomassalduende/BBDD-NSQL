@@ -1,0 +1,16 @@
+.superheroe {
+  margin-top: 60px;
+  margin-left: 15%;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.superheroe-data {
+  width: 80%;
+}
+
+.boton-eliminar {
+  margin-left: 10px;
+}

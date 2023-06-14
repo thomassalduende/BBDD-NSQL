@@ -1,0 +1,12 @@
+POST http://localhost:3000/superheroes/add
+Content-Type: application/json
+
+{
+    "nombre": "nazareno",
+    "nombre_pers": "spider",
+    "biografia": "loreninout",
+    "año_aparicion": "1998",
+    "casa": "marvel",
+    "equipamiento": "espadachin",
+    "images": "negativo"
+}
