@@ -2,11 +2,9 @@ version: '3'
 services:
   backend:
     build: ./backend
-      context: .
-      dockerfile: Dockerfile
     command: sh -c 'npm install; npm start'
     volumes:
-      - /home/thomas/Escritorio/Bases de Datos NSQL/tp3-mongo/backend:/backend
+      - /home/thomas/Escritorio/Bases de Datos NSQL/tp4-mongo/backend:/backend
     ports:
       - 3000:3000
     environment:
@@ -25,7 +23,7 @@ services:
     image: mongo
     command: sh -c 'npm install; npm run dev'
     volumes:
-      - /home/thomas/Escritorio/Bases de Datos NSQL/tp3-mongo/frontend:/frontend
+      - /home/thomas/Escritorio/Bases de Datos NSQL/tp4-mongo/frontend:/frontend
     depends_on:
       - "backend"
     stdin_open: true

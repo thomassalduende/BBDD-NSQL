@@ -21,7 +21,7 @@ services:
     image: node:16.20.0-alpine3.16
     command: sh -c 'npm install; npm run dev'
     volumes:
-      - /home/thomas/Escritorio/Bases de Datos NSQL/tp-personajes-redis/front-tp2:/front-tp2
+      - /home/thomas/Escritorio/Bases de Datos NSQL/tp2-redis/front-tp2:/front-tp2
     depends_on:
       - "backend"
     stdin_open: true
