@@ -6,7 +6,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - /home/thomas/Escritorio/Bases de Datos NSQL/tp-personajes-redis/back-tp2:/back-tp2
+      - /home/thomas/Escritorio/Bases de Datos NSQL/tp2-redis/back-tp2:/back-tp2
     depends_on:
       - "db-redis-node"
   db-redis-node:

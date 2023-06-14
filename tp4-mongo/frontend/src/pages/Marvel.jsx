@@ -14,7 +14,7 @@ export function Marvel() {
       })
   },[])
   return (
-    <section>
+    <section className='section'>
       {
         loading 
         ? superMarvel.length > 1 

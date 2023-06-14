@@ -83,7 +83,7 @@ client.connect()
           año_aparicion,
           casa,
           equipamiento,
-          images: images ? JSON.parse(images) : []
+          images: images
         };
     
         console.log(newPersonaje);
@@ -97,26 +97,29 @@ client.connect()
     };
     
 
-
     const updatePersonaje = async (req, res) => {
       const { id } = req.params;
-      const updates = req.body;
+      let updates = req.body;
+      // Excluir el campo "images" del objeto "updates"
+      const { images, ...otherUpdates } = updates;
+    
       try {
         const result = await db.collection('personajes').updateOne(
-          { _id: mongodb.ObjectId(id) },
-          { $set: updates }
+          { _id: new ObjectId(id)},
+          { $set: otherUpdates }
         );
         if (result.matchedCount === 0) {
           res.status(404).json({ error: 'Personaje no encontrado' });
           return;
         }
+        console.log(result);
         res.json({ message: 'Personaje actualizado correctamente' });
       } catch (error) {
         console.error('Error al actualizar el personaje:', error);
         res.status(500).json({ error: 'Ocurrió un error al actualizar el personaje' });
       }
     };
-
+    
     const deletePersonaje = async (req, res) => {
       const { id } = req.params;
       try {
@@ -137,9 +140,9 @@ client.connect()
     app.get('/marvel', getPersonajeMarvel);
     app.get('/dc', getPersonajeDc);
     app.get('/superheroe/:id', getPersonajesId);
-    app.post('/superheroes/add',createPersonaje);
-    app.put('/superheroes/:id/edit', updatePersonaje);
-    app.delete('/superheroes/:id/delete', deletePersonaje);
+    app.post('/add',createPersonaje);
+    app.put('/edit/:id', updatePersonaje);
+    app.delete('/delete/:id', deletePersonaje);
 
     // Iniciar el servidor
     app.listen(port, () => {

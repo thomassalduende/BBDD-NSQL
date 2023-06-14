@@ -11,7 +11,7 @@ export default function AgregarSuperheroes() {
   return (
     <>
       <div className="text-center">
-        <button className="btn btn-primary mt-3" onClick={handleShow}>Cargar Superheroes</button>
+        <button className="btn btn-primary mt-3 m-5" onClick={handleShow}>Cargar Superheroes</button>
       </div>
 
       {

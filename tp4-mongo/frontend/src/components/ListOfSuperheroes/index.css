@@ -1,0 +1,6 @@
+.section {
+    display: grid;
+    width: 80%;
+    margin-left: 12%;
+    grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
+}

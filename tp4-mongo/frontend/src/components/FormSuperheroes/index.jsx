@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { postSuperheroes } from '../../services/postSuperheroes';
 import { uploadFile } from '../../../firebase'
+import Swal from 'sweetalert2';
 
 export function FormSuperheroes() {
   const form = useRef();
@@ -18,13 +19,14 @@ export function FormSuperheroes() {
 
     for (let i = 0; i < images.length; i++) {
       const file = images[i];
+      console.log(file)
       const imageUrl = await uploadFile(file);
-      imagesURL.push(imageUrl);
+      imagesURL.push(imageUrl[1]);
+      
     }
-    console.log(imagesURL)
-
+  
     formData.delete('images');
-    formData.append('images', JSON.stringify(imagesURL));
+    formData.append('images', imagesURL);
 
     const capitalizedFormData = Object.fromEntries(
       Array.from(formData.entries()).map(([name, value]) => [name, value])
@@ -34,8 +36,13 @@ export function FormSuperheroes() {
 
     postSuperheroes(capitalizedFormData)
       .then(() => {
-        console.log('Superhéroes guardados exitosamente');
         window.location.reload(true)
+        Swal.fire({
+          icon: 'success',
+          title: 'Personaje creado con éxito',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch((error) => {
         console.error('Error al guardar los superhéroes:', error);

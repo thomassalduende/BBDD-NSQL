@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Superheroe } from '../Superheroe'
 import { getSuperheroes } from '../../services/getSuperheroes'
-
+import './index.css'
 export function ListOfSuperheroes() {
   const [superheroes, setSuperheroes] = useState([])
   const [loading, setLoading] = useState(false)
@@ -16,7 +16,7 @@ export function ListOfSuperheroes() {
   },[])
   
   return (
-    <section>
+    <section className='section'>
       {
         loading
         ? superheroes.length > 1 

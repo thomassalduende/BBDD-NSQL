@@ -2,14 +2,18 @@
   margin-top: 60px;
   margin-left: 15%;
   display: flex;
-  width: 30%;
-  flex-direction: column;
-  margin-bottom: 50px;
+  width: 60%;
+}
+.superheroe-data {
+  margin-left: 50px;
 }
 
-.superheroe-data {
-  width: 80%;
+.inputs {
+  width: 500px;
+  margin-top: 20px;
 }
+
+
 
 .boton-eliminar {
   margin-left: 10px;

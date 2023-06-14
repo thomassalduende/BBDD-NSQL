@@ -14,7 +14,7 @@ export function Dc() {
       })
   },[])
   return (
-    <section>
+    <section className='section'>
       {
         loading 
         ? superDc.length > 1 
