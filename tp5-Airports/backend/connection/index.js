@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb')
-const URI = 'mongodb://mongodb:27017';
+const URI = 'mongodb://mongodb-airports:27017';
 
 // Create Instance of MongoClient for mongodb
 const client = new MongoClient(URI)

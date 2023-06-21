@@ -8,8 +8,8 @@ const router = Router()
 router.get('/airports', getAllAirports);
 router.get('/airport/:id', getAirportsId);
 router.post('/add', createAirport);
-router.put('/update', updateAirport);
-router.delete('/delete', deleteAirport);
+router.put('/update/:id', updateAirport);
+router.delete('/delete/:id', deleteAirport);
 
 
 

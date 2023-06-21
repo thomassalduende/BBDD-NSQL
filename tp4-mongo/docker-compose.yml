@@ -20,12 +20,13 @@ services:
   frontend:
     build: ./frontend
     container_name: 'mongo_frontend'
-    image: mongo
-    command: sh -c 'npm install; npm run dev'
+    command: sh -c 'npm install; npm run dev -- --host'
+    ports:
+      - 5173:5173
     volumes:
       - /home/thomas/Escritorio/Bases de Datos NSQL/tp4-mongo/frontend:/frontend
     depends_on:
-      - "backend"
+      - backend
     stdin_open: true
     tty: true
 

@@ -11,6 +11,6 @@ const rutas = require('./rutas/rutas')
 
 app.use(rutas)
 
-app.listen(4000, function(){
+app.listen(3000, function(){
     console.log('Aplicacion corriendo en el puerto 3000')
 })

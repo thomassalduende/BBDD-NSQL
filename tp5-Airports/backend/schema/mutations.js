@@ -2,6 +2,8 @@ const { client } = require("../connection/index");
 
 const db = client.db('airports-tp5');
 
+var ObjectId = require('mongodb').ObjectId;
+
 const getAllAirports = async (req, res) => {
   try {
     const airports = await db.collection('airports').find().toArray();
