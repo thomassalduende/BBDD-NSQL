@@ -25,98 +25,95 @@ export function FormUpdate({ aiport }) {
   }
 
   return (
-    <div className="w-[400px] mx-auto">
-    <form ref={form} onSubmit={handleSubmit} className='flex flex-col'>
-      <div className="mb-4">
-        <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter your name"
-          defaultValue={aiport.name}
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="city" className="block text-gray-700 font-bold mb-2">
-          City
-        </label>
-        <input
-          type="text"
-          id="city"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter your city"
-          defaultValue={aiport.city}
-
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="icao" className="block text-gray-700 font-bold mb-2">
-          ICAO
-        </label>
-        <input
-          type="text"
-          id="icao"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter ICAO code"
-          defaultValue={aiport.icao}
-
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="lat" className="block text-gray-700 font-bold mb-2">
-          Latitude
-        </label>
-        <input
-          type="text"
-          id="lat"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter latitude"
-          defaultValue={aiport.lat}
-
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="lng" className="block text-gray-700 font-bold mb-2">
-          Longitude
-        </label>
-        <input
-          type="text"
-          id="lng"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter longitude"
-          defaultValue={aiport.lng}
-
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="tz" className="block text-gray-700 font-bold mb-2">
-          Timezone
-        </label>
-        <input
-          type="text"
-          id="tz"
-          className="border border-gray-400 rounded px-4 py-2 w-full"
-          placeholder="Enter timezone"
-          defaultValue={aiport.tz}
-
-        />
-      </div>
-
-      <button
-        type="submit"
-        className=" bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
-      >
-        Update
-      </button>
-    </form>
+    <div className="w-[100px] h-[350px]  z-999">
+<form ref={form} onSubmit={handleSubmit} className="max-w-xs ml-[-10px]">
+  <div className="mb-4">
+    <label htmlFor="name" className="text-gray-700 font-bold mb-2 text-[10px]">
+      Name
+    </label>
+    <input
+      type="text"
+      id="name"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter your name"
+      defaultValue={aiport.name}
+    />
   </div>
+
+  <div className="mb-4">
+    <label htmlFor="city" className="text-gray-700 font-bold mb-2 text-[10px]">
+      City
+    </label>
+    <input
+      type="text"
+      id="city"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter your city"
+      defaultValue={aiport.city}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="icao" className="text-gray-700 font-bold mb-2  text-[10px]">
+      ICAO
+    </label>
+    <input
+      type="text"
+      id="icao"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter ICAO code"
+      defaultValue={aiport.icao}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="lat" className="text-gray-700 font-bold mb-2 text-[10px]">
+      Latitude
+    </label>
+    <input
+      type="text"
+      id="lat"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter latitude"
+      defaultValue={aiport.lat}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="lng" className="text-gray-700 font-bold mb-2 text-[10px]">
+      Longitude
+    </label>
+    <input
+      type="text"
+      id="lng"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter longitude"
+      defaultValue={aiport.lng}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="tz" className="text-gray-700 font-bold mb-2 text-[10px]">
+      Timezone
+    </label>
+    <input
+      type="text"
+      id="tz"
+      className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
+      placeholder="Enter timezone"
+      defaultValue={aiport.tz}
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="bg-orange-500 hover:bg-orange-600 text-white font-bold w-20 h-1/6 ml-4 rounded"
+  >
+    Update
+  </button>
+</form>
+
+</div>
+
   )
 }

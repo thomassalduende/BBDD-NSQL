@@ -1,26 +1,25 @@
-import React, { useContext } from 'react'
-import { FilterContext } from '../context/Filtro'
+import React, { useContext } from 'react';
+import { FilterContext } from '../context/Filtro';
+
 
 export function useFilters() {
-  const { filters, setFilters } = useContext(FilterContext)
+  const { filters, setFilters } = useContext(FilterContext);
   
   const filterProducts = (items) => {
-    let filteredProducts = items.filter(item => {
-      if (filters.city === 'all') {
-        return true; // Retorna todos los elementos si la categoría es 'all'
-      } else if (filters.city === 'city') {
-        return item.nombre.startsWith(filters.city); // Filtra por nombres de ciudad
-      } else if (filters.city === 'iata_faa') {
-        return item.iata_faa === filters.iata_faa; // Filtra por iata_faa
-      }
-      return false; // Retorna falso si no se cumple ninguna condición
-    });
-
-    return filteredProducts;
-  }
+    console.log(filters.category, filters.iata_faa);
+    if (filters.category === 'all' && filters.iata_faa === 'all') {
+      return items; // Retorna todos los elementos si ambos filtros están establecidos en 'all'
+    } else if (filters.category !== 'all' && filters.iata_faa === 'all') {
+      return items.filter(item => item.city.startsWith(filters.category)); // Filtra por nombres de ciudad
+    } else if (filters.category === 'all' && filters.iata_faa !== 'all') {
+      return items.filter(item => item.iata_faa === filters.iata_faa); // Filtra por iata_faa
+    } else if (filters.category !== 'all' && filters.iata_faa !== 'all') {
+      return items.filter(item => item.city.startsWith(filters.category) && item.iata_faa === filters.iata_faa); // Filtra por nombres de ciudad y iata_faa
+    }
+    return []; // Retorna un arreglo vacío si no se cumple ninguna condición
+  };
 
   return { filterProducts, filters, setFilters };
-
 }
 
 

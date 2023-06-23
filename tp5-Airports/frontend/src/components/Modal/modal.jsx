@@ -4,7 +4,7 @@ export const Modal = ({ show, onHide, title, children }) => {
       <div className="fixed inset-0 bg-gray-900 opacity-75 z-50"></div>
       <div className="bg-white rounded-lg p-8 z-50" style={{ position: 'fixed', zIndex: '999' }}>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">{title}</h2>
+          <h2 className="text-[11px] font-semibold">{title}</h2>
           <button
             className="text-gray-500 hover:text-gray-700 ml-4"
             onClick={onHide}
@@ -13,7 +13,7 @@ export const Modal = ({ show, onHide, title, children }) => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-6 w-6"
+              className="h-2 w-2"
             >
               <path
                 fillRule="evenodd"

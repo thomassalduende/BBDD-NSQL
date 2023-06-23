@@ -1,25 +1,41 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { postAirports } from '../../services/postAirports';
 import Swal from 'sweetalert2';
 
 export function Form() {
 
   const form = useRef()
+  const [error, setError] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData(form.current);
-    postAirports(formData)
-      .then(() => {
-        window.location.reload(true)
-        Swal.fire({
-          icon: 'success',
-          title: 'Aiport agregado con éxito!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      })
-  }
+
+    // Verificar si todos los campos están completos
+    let isFormValid = true;
+    const fieldsToValidate = ['name', 'city', 'icao', 'lat', 'lng', 'tz'];
+
+    fieldsToValidate.forEach((field) => {
+      const value = formData.get(field);
+      if (!value) {
+        isFormValid = false;
+        setError('Completa todos los campos!')
+        }
+    });
+
+    if (isFormValid) {
+      postAirports(formData)
+        .then(() => {
+          window.location.reload(true);
+          Swal.fire({
+            icon: 'success',
+            title: 'Airport agregado con éxito!',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
+    }
+  };
 
   return (
     <div className="w-[400px] mx-auto">
@@ -95,7 +111,7 @@ export function Form() {
           placeholder="Enter timezone"
         />
       </div>
-
+      {error && <p className='grid justify-center text-black-900 font-medium mb-2'>{error}</p>}
       <button
         type="submit"
         className=" bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"

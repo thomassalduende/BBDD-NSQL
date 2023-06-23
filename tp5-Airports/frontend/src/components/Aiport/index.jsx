@@ -8,12 +8,10 @@ import Swal from 'sweetalert2'
 
 export function Aiport() {
   const [aiport, setAiport] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
 
   const { id } = useParams()
-  
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -29,13 +27,14 @@ export function Aiport() {
       })
   }
 
-  useEffect((id) => {
+  useEffect(() => {
     getAirports(id)
       .then((res) => {
         setAiport(res)
         setLoading(true)
     })
-  })
+  },[id])
+
 
   return (
     <>
@@ -47,8 +46,8 @@ export function Aiport() {
             <p>{aiport.lat}</p>
             <p>{aiport.lng}</p>
             <p>{aiport.tz}</p>
-            <button onClick={handleOpen}>Editar</button>
-            <button onClick={handleDelete}>Eliminar</button>
+            <button onClick={handleOpen} className='bg-orange-500 mr-2 text-white w-10 rounded-sm shadow-sm'>Editar</button>
+            <button onClick={handleDelete} className='bg-orange-700 text-white w-13 rounded-sm shadow-sm' >Eliminar</button>
         </>
       : <p className='text-red-600 text-center'>Cargando...</p>}
     

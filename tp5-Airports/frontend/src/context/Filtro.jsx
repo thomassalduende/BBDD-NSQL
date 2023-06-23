@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const FilterContext = createContext()
 
 export function FiltersProvider({ children }) {
-  const [filters, setFilters] = useState({city: 'all'})
+  const [filters, setFilters] = useState({category: 'all', iata_faa: 'all'})
 
   return (
     <FilterContext.Provider value={{
