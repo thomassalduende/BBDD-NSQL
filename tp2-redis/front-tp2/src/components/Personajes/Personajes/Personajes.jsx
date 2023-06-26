@@ -11,10 +11,8 @@ export const Personajes = () => {
   const [personajes, setPersonajes] = useState([])
   const [capitulo, setCapitulo] = useState('')
   const [loading, setLoading] = useState(false)
-
-  const { number_episode } = useParams()
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const handleOpenModal = () => {
       setIsModalOpen(true);
@@ -23,13 +21,16 @@ export const Personajes = () => {
     const handleCloseModal = () => {
       setIsModalOpen(false);
     };
+    const cap = useParams()
 
     const handleClick = () => {
-      getPersonajesEpisode(number_episode)
+      getPersonajesEpisode(cap)
       .then(res => {
         setLoading(true)
         setPersonajes(res)
+        console.log('cap1', res)
       })
+      console.log(cap)
     }
 
     useEffect(() => {
@@ -50,7 +51,9 @@ export const Personajes = () => {
           <form>
             <label htmlFor="capitulo">Numero de Capitulo</label>
             <input type="text" id="capitulo" value={capitulo} onChange={onChangeCapitulo}/>
-            <button className="getPersonajes" type="button" onClick={handleClick}>Listar Personajes</button>
+            <a href={`/${capitulo}`}>
+              <button className="getPersonajes" type="button" onClick={handleClick}>Listar Personajes</button>
+            </a>
           </form>
           {
           loading ? 

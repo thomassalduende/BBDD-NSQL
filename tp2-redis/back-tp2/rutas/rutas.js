@@ -8,7 +8,7 @@ const ruter = Router()
 ruter.post('/add/personaje', agregarPersonaje)
 ruter.delete('/delete/personaje', eliminarPersonaje)
 ruter.get('/personajes', getAllPersonajes)
-ruter.get('personajes/episode', getAllPersonajesEpisode)
+ruter.get('personajes/:episode', getAllPersonajesEpisode)
 
 ruter.post('add/episode', agregarEpisodio)
 

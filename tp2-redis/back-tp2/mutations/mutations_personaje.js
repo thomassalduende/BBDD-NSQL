@@ -15,8 +15,8 @@ const eliminarPersonaje = async (req, res) => {
 }
 
 const getAllPersonajesEpisode = async (req, res) => {
-  const { number_episode } = req.body;
-  console.log(number_episode)
+  const { number_episode } = req.params;
+  console.log(req.params)
   const allCharacters = await redisclient.lRange("lista_key", 0, -1)
   const charactersByNumber = []
 

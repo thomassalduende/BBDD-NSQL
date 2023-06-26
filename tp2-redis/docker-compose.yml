@@ -17,12 +17,13 @@ services:
 
   frontend:
     build: ./front-tp2
-    container_name: 'redis_frontend'
-    image: node:16.20.0-alpine3.16
-    command: sh -c 'npm install; npm run dev'
+    container_name: 'frontend-tp2'
+    command: sh -c 'npm install; npm run dev -- --host'
+    ports:
+      - 5173:5173
     volumes:
       - /home/thomas/Escritorio/Bases de Datos NSQL/tp2-redis/front-tp2:/front-tp2
     depends_on:
-      - "backend"
+      - backend
     stdin_open: true
     tty: true
