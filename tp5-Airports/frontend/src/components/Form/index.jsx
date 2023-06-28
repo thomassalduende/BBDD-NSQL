@@ -9,21 +9,22 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(form.current);
+    const data = new FormData(form.current);
+    
+    const formData = Object.fromEntries(
+      Array.from(data.entries()).map(([name, value]) => [name, value])
+    );
 
     // Verificar si todos los campos están completos
-    let isFormValid = true;
-    const fieldsToValidate = ['name', 'city', 'icao', 'lat', 'lng', 'tz'];
-
-    fieldsToValidate.forEach((field) => {
-      const value = formData.get(field);
-      if (!value) {
-        isFormValid = false;
-        setError('Completa todos los campos!')
-        }
-    });
-
-    if (isFormValid) {
+    if(
+      formData.name !== '' &&
+      formData.city !== '' &&
+      formData.icao !== '' &&
+      formData.lat !== '' &&
+      formData.lng !== '' &&
+      formData.tz !== '' 
+    ){
+      console.log(formData)
       postAirports(formData)
         .then(() => {
           window.location.reload(true);
@@ -34,6 +35,8 @@ export function Form() {
             timer: 1500,
           });
         });
+    }else {
+      setError('Complete todos los campos')
     }
   };
 
@@ -46,7 +49,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="name"
+          name="name"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter your name"
         />
@@ -58,7 +61,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="city"
+          name="city"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter your city"
         />
@@ -70,7 +73,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="icao"
+          name="icao"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter ICAO code"
         />
@@ -82,7 +85,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="lat"
+          name="lat"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter latitude"
         />
@@ -94,7 +97,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="lng"
+          name="lng"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter longitude"
         />
@@ -106,7 +109,7 @@ export function Form() {
         </label>
         <input
           type="text"
-          id="tz"
+          name="tz"
           className="border border-gray-400 rounded px-4 py-2 w-full"
           placeholder="Enter timezone"
         />

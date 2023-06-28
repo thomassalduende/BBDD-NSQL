@@ -1,18 +1,22 @@
-import React, { useRef } from 'react'
-import { postAirports } from '../../services/postAirports';
 import Swal from 'sweetalert2';
 import { updateAirports } from '../../services/updateAirports';
-import { useParams } from 'react-router-dom';
+import { useRef } from 'react';
+
 
 export function FormUpdate({ aiport }) {
 
   const form = useRef()
-  const { id } = useParams()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData(form.current);
-    updateAirports(id, formData)
+
+    const capitalizedFormData = Object.fromEntries(
+      Array.from(formData.entries()).map(([name, value]) => [name, value])
+    );
+
+    console.log(capitalizedFormData);
+    updateAirports(aiport._id, capitalizedFormData)
       .then(() => {
         window.location.reload(true)
         Swal.fire({
@@ -33,7 +37,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="name"
+      name="name"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter your name"
       defaultValue={aiport.name}
@@ -46,7 +50,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="city"
+      name="city"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter your city"
       defaultValue={aiport.city}
@@ -59,7 +63,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="icao"
+      name="icao"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter ICAO code"
       defaultValue={aiport.icao}
@@ -72,7 +76,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="lat"
+      name="lat"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter latitude"
       defaultValue={aiport.lat}
@@ -85,7 +89,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="lng"
+      name="lng"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter longitude"
       defaultValue={aiport.lng}
@@ -98,7 +102,7 @@ export function FormUpdate({ aiport }) {
     </label>
     <input
       type="text"
-      id="tz"
+      name="tz"
       className="border border-gray-400 rounded h-[25px]  py-2 w-[130px]"
       placeholder="Enter timezone"
       defaultValue={aiport.tz}
